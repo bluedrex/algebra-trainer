@@ -1,1 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Junior High Algebra Trainer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+  <div class="app-container">
+
+    <!-- 1. CHAPTER SELECTION MENU -->
+    <div id="menu-container" class="card">
+      <h1>Algebra Practice Modules</h1>
+      <p class="subtitle">Select 1 to 3 topics to start, or pick all for a mixed review:</p>
+      
+      <div class="checkbox-group">
+        <label class="checkbox-card">
+          <input type="checkbox" class="chapter-checkbox" value="1">
+          <span><strong>Level 1:</strong> Substitution</span>
+        </label>
+        <label class="checkbox-card">
+          <input type="checkbox" class="chapter-checkbox" value="2">
+          <span><strong>Level 2:</strong> Expansion</span>
+        </label>
+        <label class="checkbox-card">
+          <input type="checkbox" class="chapter-checkbox" value="3">
+          <span><strong>Level 3:</strong> Factorisation</span>
+        </label>
+        <label class="checkbox-card">
+          <input type="checkbox" class="chapter-checkbox" value="4">
+          <span><strong>Level 4:</strong> Linear Equations</span>
+        </label>
+        <label class="checkbox-card">
+          <input type="checkbox" class="chapter-checkbox" value="5">
+          <span><strong>Level 5:</strong> Changing the Subject</span>
+        </label>
+        <label class="checkbox-card">
+          <input type="checkbox" class="chapter-checkbox" value="6">
+          <span><strong>Level 6:</strong> Exponents</span>
+        </label>
+      </div>
+
+      <div class="button-group">
+        <button class="btn btn-secondary" onclick="selectAllChapters()">Select All (Marathon)</button>
+        <button class="btn btn-primary" onclick="startQuizSession(10)">Start Workout (10 Questions)</button>
+      </div>
+    </div>
+
+    <!-- 2. ACTIVE QUIZ SESSION UI -->
+    <div id="quiz-container" class="card" style="display: none;">
+      <div class="quiz-header">
+        <span id="level-badge" class="badge">Level 1</span>
+        <span id="question-progress">Question 1 of 10</span>
+      </div>
+
+      <div class="question-box">
+        <h2 id="question-title">Loading question...</h2>
+      </div>
+
+      <div class="input-box">
+        <input type="text" id="user-answer-input" placeholder="Type your answer..." autocomplete="off" onkeyup="if(event.key==='Enter') submitAnswer()">
+        <button class="btn btn-primary" onclick="submitAnswer()">Submit</button>
+      </div>
+    </div>
+
+    <!-- 3. RESULTS & XP SUMMARY -->
+    <div id="results-container" class="card" style="display: none;">
+      <!-- Results summary dynamically populated by app.js -->
+    </div>
+
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="generator.js"></script>
+  <script src="app.js"></script>
+  
+  <script>
+    // Quick helper to handle 'Select All' button
+    function selectAllChapters() {
+      const checkboxes = document.querySelectorAll('.chapter-checkbox');
+      checkboxes.forEach(cb => cb.checked = true);
+    }
+  </script>
+</body>
+</html>
