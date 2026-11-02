@@ -1,4 +1,4 @@
-const WEB_APP_URL = "https://script.google.com/macros/s/YOUR_DEPLOYED_SCRIPT_URL_HERE/exec";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyJyZF28tMkCIDBfCz7z5PlVvgC7-mUPNDEdvw1IT2xt4fpPLI-1G_cYOL67E2Eqsz98A/exec";
 
 async function submitQuizSession(sessionResults) {
   /*
