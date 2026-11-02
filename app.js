@@ -45,7 +45,6 @@ const WEB_APP_URL = "https://script.google.com/macros/s/YOUR_DEPLOYED_SCRIPT_URL
 
 // 1. Initialize Quiz Session from Chapter Menu
 function startQuizSession(totalQuestions = 10) {
-  // Read checked boxes from UI (e.g., checkboxes with class 'chapter-checkbox')
   const checkedBoxes = document.querySelectorAll('.chapter-checkbox:checked');
   selectedLevels = Array.from(checkedBoxes).map(cb => parseInt(cb.value));
 
@@ -65,20 +64,20 @@ function startQuizSession(totalQuestions = 10) {
   userScore = 0;
   levelCounts = { l1: 0, l2: 0, l3: 0, l4: 0, l5: 0, l6: 0 };
 
-  // Generate balanced queue across selected levels
+  // Generate question queue
   for (let i = 0; i < totalQuestions; i++) {
-    // Pick a random level from the user's selected array
     const chosenLevel = selectedLevels[Math.floor(Math.random() * selectedLevels.length)];
-    
-    // Generate question object from generator.js
     const qObj = getRandomQuestion(chosenLevel);
     questionQueue.push(qObj);
-
-    // Track how many questions were generated per level
     levelCounts[`l${chosenLevel}`]++;
   }
 
   startTime = Date.now();
+
+  // ADD THESE TWO LINES TO SWITCH CARDS:
+  document.getElementById("menu-container").style.display = "none";
+  document.getElementById("quiz-container").style.display = "block";
+
   renderCurrentQuestion();
 }
 
